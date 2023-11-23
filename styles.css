@@ -1,0 +1,86 @@
+table.meniu {
+    text-align: left;
+    background-color:#F8E9FC;
+    border:3px dashed black;
+}
+
+center {
+    margin-left:auto; 
+    margin-right:auto;
+    margin-bottom: 0px;
+    margin-top: auto;
+    border-width: 3px;
+    border-style: solid;
+    border-color: grey;
+    padding: 1px;
+    background-color: white;                
+}
+table.backlink {  
+    margin-left:auto; 
+    margin-right:auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-width: 13px;
+    border-style: solid;
+    border-color: red;    
+    background-color: cyan;   
+}
+body {
+    text-align:center;
+}   
+form.login {
+    margin-bottom:0;
+    padding:6px; 
+
+}
+input.s1 {   
+    width:100%;
+    font-size:13pt;
+    text-align:left;
+}
+.login {
+    max-width: 300px;
+}
+
+.chatbox {
+    height: 400px;
+    word-wrap:break-word;
+    border: 1px solid black;
+    overflow-x: hidden; 
+    overflow-y: scroll; 
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-anchor: auto ;
+}
+.userlist {
+    height: 300px;
+    width: 100%;
+
+    overflow: auto;
+}
+.main-bg {
+    background-color:#315863;
+}
+
+.form-group{
+    border-radius: 0px; 
+}
+img{
+    border: 2px solid black;
+    border-radius: 25px;
+}
+.desc {
+    border: 1px solid black;
+    border-radius: 8px;
+   
+    max-width: 500px;
+    max-height: 200px;
+    
+    padding: 8px;
+    word-wrap: break-word;
+
+}
+.justify{
+    text-align: justify;
+    text-justify: inter-word;
+}
