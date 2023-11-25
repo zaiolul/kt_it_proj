@@ -34,18 +34,18 @@ include("functions.php");
         include("config.php");
 
         inisession("part");   //   pavalom prisijungimo etapo kintamuosius
-        $_SESSION['prev'] = "index";
-        $time = 10;
-        $file = "./last_send.txt";
-        if (file_exists("./last_send.txt")) {
-            $lastSend = file_get_contents($file);
-            if (time() - $lastSend >= $time) {
+        // $_SESSION['prev'] = "index";
+        // $time = 10;
+        // $file = "./last_send.txt";
+        // if (file_exists("./last_send.txt")) {
+        //     $lastSend = file_get_contents($file);
+        //     if (time() - $lastSend >= $time) {
                 
-                include('send_mail.php');
+        //         include('send_mail.php');
 
-                file_put_contents($file, time());
-            }
-        }
+        //         file_put_contents($file, time());
+        //     }
+        // }
         include("menu.php"); //įterpiamas meniu pagal vartotojo rolę
     ?>
 
