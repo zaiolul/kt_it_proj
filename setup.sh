@@ -3,12 +3,11 @@
 SOURCE_DIR="/var/www/html/pazinciu_portalas" 
 DBNAME="it_proj"
 
-if [ ! -d $SOURCE_DIR ]; then
-    mkdir  $SOURCE_DIR
-else
+if [ -d $SOURCE_DIR ]; then
     rm -r $SOURCE_DIR
 fi
 
+mkdir $SOURCE_DIR
 cp ./source/* $SOURCE_DIR
 chmod o+x $SOURCE_DIR #if not set, need permissions to access
 systemctl restart apache2
