@@ -68,6 +68,5 @@ if (checkname($user)) //vardo sintakse
   }
 }
 
-//           session_regenerate_id(true);
 header("Location:index.php");
 exit;

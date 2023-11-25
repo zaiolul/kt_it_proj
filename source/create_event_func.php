@@ -3,19 +3,19 @@
 session_start();
 
 if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "create_event" && $_SESSION['prev'] != "index")) {
-    header("Location: logout.php");
+    header("Location:logout.php");
     exit;
 }
 include("config.php");
 include("functions.php");
 if ($_SESSION['ulevel'] != $user_roles[MOD_LEVEL]) {
-    header("Location:/index.php");
+    header("Location:index.php");
     exit;
 }
 
 
 if (!isset($_POST['update'])) {
-    header("Location: index.php");
+    header("Location:index.php");
     exit;
 }
 
@@ -92,7 +92,7 @@ if (!empty($update)) {
     } else {
         $_SESSION['message'] = "Renginio duomenys nekeisti.";
     }
-    header("Location:/create_event.php/?update=$update");
+    header("Location:create_event.php/?update=$update");
     exit;
 } else {
     if ($title_check && $date_check && $desc_check  && $loc_check &&  $short_check && $limit_check) {
@@ -102,10 +102,10 @@ if (!empty($update)) {
             exit;
         }
         $id = mysqli_insert_id($db);
-        header("Location:/event_page.php/?event=$id");
+        header("Location:event_page.php/?event=$id");
         exit;
     }
 }
 
-header("Location:/create_event.php/?update=$update");
+header("Location:create_event.php/?update=$update");
 exit;

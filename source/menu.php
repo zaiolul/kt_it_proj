@@ -62,7 +62,7 @@ foreach ($user_roles as $x => $x_value) {
                 }
                 echo "</button>";
 
-
+                echo $_SESSION['prev']."----";
                 ?>
 
 

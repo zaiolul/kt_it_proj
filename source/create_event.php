@@ -4,11 +4,11 @@ session_start();
 include("config.php");
 // sesijos kontrole
 if (!isset($_SESSION['prev']) ) {
-    header("Location:/logout.php");
+    header("Location:logout.php");
     exit;
 }
 if($_SESSION['ulevel'] != $user_roles[MOD_LEVEL]){
-    header("Location:/index.php");
+    header("Location:index.php");
     exit;
 }
 
@@ -34,7 +34,7 @@ if ($_SESSION['prev'] == "index" || $_SESSION['prev'] == "event_page") {
 }
 $_SESSION['prev'] = "create_event";
 if (!isset($_GET['update'])) {
-    header("Location:/index.php");
+    header("Location:index.php");
     exit;
 }
 

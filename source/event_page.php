@@ -3,7 +3,7 @@
 
 session_start();
 if (empty($_SESSION['prev'])) {
-    header("Location: /logout.php");
+    header("Location: logout.php");
     exit;
 }
 
@@ -17,7 +17,7 @@ $_SESSION['prev'] = "event_page";
 
 
 if (!isset($_GET['event'])) {
-    header("Location: /index.php");
+    header("Location:index.php");
     exit;
 }
 $eventid = $_GET['event'];
@@ -59,7 +59,7 @@ else $registered = false;
 
 
 if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles["Moderatorius"] && !$registered){
-    header("Location: /index.php");
+    header("Location:index.php");
     exit;
 }
 ?>

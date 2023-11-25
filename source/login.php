@@ -1,9 +1,4 @@
 <?php
-// login.php - tai prisijungimo forma, index.php puslapio dalis 
-// formos reikšmes tikrins proclogin.php. Esant klaidų pakartotinai rodant formą rodomos klaidos
-// formos laukų reikšmės ir klaidų pranešimai grįžta per sesijos kintamuosius
-// taip pat iš čia išeina priminti slaptažodžio.
-// perėjimas į registraciją rodomas jei nustatyta $uregister kad galima pačiam registruotis
 
 if (!isset($_SESSION)) {
     header("Location: logout.php");
@@ -52,30 +47,16 @@ include("config.php");
 
                 <div class="row m-4 text-center">
                     <div class="col-6 ">
-                        <!-- <button type="submit" name="login" class="btn btn-primary btn-block mb-4">Prisijungti</button> -->
+                       
                         <input type='submit' name='login' value='Prisijungti' class="btn btn-primary">
                     </div>
                     <div class="col-6">
                         <a href="register.php" class="btn btn-secondary" role="button">Registracija</a>
-                        <!-- <input type='submit' name='problem' value='test' class="btn btn-default"> -->
-
-                        <!-- <button type="submit" name="problem" class="btn btn-primary btn-block mb-4">Pamiršote slaptažodį?</button> -->
+                     
                     </div>
                 </div>
 
-                <!-- <button type="submit" name="login" class="btn btn-primary btn-block mb-4">Prisijungti</button>
-    <button type="submit" name="problem" class="btn btn-primary btn-block mb-4">Pamiršote slaptažodį?</button> -->
-
-
-
-                <!-- <div class="row">
-                    <?php
-                    // if ($uregister != "admin") {
-                    //     echo "<a href=\"register.php\">Registracija</a>";
-                    // }
-                    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"guest.php\">Prisijungti kaip svečias</a>";
-                    ?>
-                </div> -->
+      
             </div>
         </div>
     </form>

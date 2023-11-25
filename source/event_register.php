@@ -44,7 +44,7 @@ if(empty($_POST['registered']))
 
 
 
-header("Location:/event_page.php/?event=$eventid");
+header("Location:event_page.php/?event=$eventid");
 exit;
 
 ?>

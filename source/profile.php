@@ -2,8 +2,8 @@
 
 
 session_start();
-if (empty($_SESSION['prev']) || ($_SESSION['prev'] != "index" && $_SESSION['prev'] != "chat" && $_SESSION['prev'] != "useredit")) {
-    header("Location: /logout.php");
+if (empty($_SESSION['prev']) ) {
+    header("Location:logout.php");
     exit;
 }
 
@@ -14,7 +14,6 @@ if ($_SESSION['prev'] != "chat") {
     $_SESSION['message'] = "";
 }
 $_SESSION['prev'] = "chat";
-
 
 
 
@@ -66,7 +65,7 @@ if ($_POST != null) {
             exit;
         }
     }
-    header("Location:/profile.php/?usr=$receiver");
+    header("Location:profile.php/?usr=$receiver");
     exit;
 }
 
@@ -89,7 +88,7 @@ if ($_POST != null) {
            
             <div class="col bg-light ">
             <div class="row text-center bg-light ">
-                <p>Atgal į [<a href="/index.php">Pradžia</a>]</p>
+                <p>Atgal į [<a href="index.php">Pradžia</a>]</p>
                 <?php
                 if ($usr == $sender)
                     echo "<a href=\"useredit.php\">Redaguoti anketą</a>";

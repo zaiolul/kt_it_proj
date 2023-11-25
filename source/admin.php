@@ -4,7 +4,7 @@ include("config.php");
 include("functions.php");
 // cia sesijos kontrole
 if (!isset($_SESSION['prev']) || ($_SESSION['ulevel'] != $user_roles[ADMIN_LEVEL])) {
-    header("Location: logout.php");
+    header("Location:logout.php");
     exit;
 }
 $_SESSION['prev'] = "admin";
@@ -14,7 +14,7 @@ $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 if ($_POST != null) {
 
     $sql = "SELECT username, ulevel, email "
-    . "FROM " . USERS . " ORDER BY ulevel DESC,username";
+    . "FROM users ORDER BY ulevel DESC,username";
     $_SESSION['message']="Pakeitimai atlikti.";
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_assoc($result)) {
@@ -25,13 +25,13 @@ if ($_POST != null) {
         if ($remove || ($nlevel != $level)) {
 
             if ($remove) {
-                $sql = "DELETE FROM " . USERS . "  WHERE  username='$user'";
+                $sql = "DELETE FROM users WHERE  username='$user'";
                 if (!mysqli_query($db, $sql)) {
                     echo " DB klaida šalinant vartotoją: " . $sql . "<br>" . mysqli_error($db);
                     exit;
                 }
             } else {
-                $sql = "UPDATE " . USERS . " SET ulevel='$nlevel' WHERE  username='$user'";
+                $sql = "UPDATE users SET ulevel='$nlevel' WHERE  username='$user'";
                 if (!mysqli_query($db, $sql)) {
                     echo " DB klaida keičiant vartotojo įgaliojimus: " . $sql . "<br>" . mysqli_error($db);
                     exit;
@@ -41,7 +41,7 @@ if ($_POST != null) {
 
     }
     
-    header("Location:/admin.php");
+    header("Location:admin.php");
     exit;
 }
 ?>
@@ -75,7 +75,7 @@ if ($_POST != null) {
 
                     <?php 
                     $sql = "SELECT username, ulevel, email,image "
-                        . "FROM " . USERS . " ORDER BY ulevel DESC,username";
+                        . "FROM users ORDER BY ulevel DESC,username";
                     $result = mysqli_query($db, $sql);
                     if (!$result || (mysqli_num_rows($result) < 1)) {
                         echo "Klaida skaitant lentelę users";
