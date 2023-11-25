@@ -4,7 +4,9 @@ SOURCE_DIR="/var/www/html/pazinciu_portalas"
 DBNAME="it_proj"
 
 if [ ! -d $SOURCE_DIR ]; then
-    mkdir -p $SOURCE_DIR
+    mkdir  $SOURCE_DIR
+else
+    rm -r $SOURCE_DIR
 fi
 
 cp ./source/* $SOURCE_DIR

@@ -68,7 +68,7 @@ if ($_POST != null) {
             <div class="col-6 bg-light">
                 <div class="row m-4 text-center bg-light">
                     <p>Naudotojų redagavimas</p>
-                    <p>Atgal į [<a href="/index.php">Pradžia</a>]</p>
+                    <p>Atgal į [<a href="index.php">Pradžia</a>]</p>
                     <p style="color:red"><b><?php echo $_SESSION['message']; ?></b></p>
                 </div>
                 <form name="users" method="post">
