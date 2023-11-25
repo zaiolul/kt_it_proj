@@ -3,7 +3,10 @@
 SOURCE_DIR="/var/www/html/pazinciu_portalas" 
 DBNAME="it_proj"
 
-mkdir $SOURCE_DIR
+if [ ! -d $SOURCE_DIR ]; then
+    mkdir -p $SOURCE_DIR
+fi
+
 cp ./source/* $SOURCE_DIR
 chmod o+x $SOURCE_DIR #if not set, need permissions to access
 
