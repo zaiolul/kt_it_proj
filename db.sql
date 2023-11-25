@@ -42,10 +42,10 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `title`, `short_description`, `description`, `reg_count`, `reg_limit`, `start_date`, `location`, `id_user_event`) VALUES
-(7, 'Testas', 'aaaaa', 'bbbbbbbbbbbbbbbbbwegsrdhjgdfjtj', 1, 5, '2023-11-29 22:00:00', 'test g 123', 0),
-(8, 'Susitikimas', 'Pirmas susitikimas', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 2, 30, '2023-11-29 22:00:00', 'Test g. KaÅ¾kur', 0),
-(9, 'Test pasibaigÄ™s', 'testas', 'testastestastestastestastestastestastestastestastestastestastestastestastestastestastestastestas', 1, 5, '2023-11-24 22:00:00', 'testas', 0);
+INSERT INTO `events` (`id`, `title`, `short_description`, `description`, `reg_count`, `reg_limit`, `start_date`, `location`) VALUES
+(7, 'Testas', 'aaaaa', 'bbbbbbbbbbbbbbbbbwegsrdhjgdfjtj', 1, 5, '2023-11-29 22:00:00', 'test g 123'),
+(8, 'Susitikimas', 'Pirmas susitikimas', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 2, 30, '2023-11-29 22:00:00', 'Test g. KaÅ¾kur'),
+(9, 'Test pasibaigÄ™s', 'testas', 'testastestastestastestastestastestastestastestastestastestastestastestastestastestastestastestas', 1, 5, '2023-11-24 22:00:00', 'testas');
 
 -- --------------------------------------------------------
 
