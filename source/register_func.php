@@ -55,7 +55,7 @@ if (checkname($user)) {
             $imgContent = addslashes(file_get_contents($imageName));
 
             $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-            $sql = "INSERT INTO " . USERS . " (username, password, email, region, age, ulevel, image)
+            $sql = "INSERT INTO (username, password, email, region, age, ulevel, image)
           VALUES ('$user', '$pass', '$mail', '$regions[$reg]', '$age','$ulevel', '$imgContent')";
 
             if (mysqli_query($db, $sql)) {
