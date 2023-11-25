@@ -90,7 +90,7 @@ if($update){
                     } else echo "<p><b>Renginio redagavimas</b><br>"
                     ?>
                    
-                        Atgal į [<a href="/index.php">Pradžia</a>]</p>
+                        Atgal į [<a href="index.php">Pradžia</a>]</p>
 
                 </div>
 
