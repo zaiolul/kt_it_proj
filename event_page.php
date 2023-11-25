@@ -39,19 +39,29 @@ if (!$result) {
 
 $arr = array();
 while ($row = mysqli_fetch_assoc($result)) {
-    $arr = array("id" => $row['id'], "title" => $row['title'], "description" => $row['description'], "short" => $row['short_description'], "count" => $row['reg_count'], "limit" => $row['reg_limit'],"start" => $row['start_date']);
+    $arr = array("id" => $row['id'], "title" => $row['title'], "description" => $row['description'], "short" => $row['short_description'], "count" => $row['reg_count'],
+     "limit" => $row['reg_limit'],"start" => $row['start_date'], "loc" => $row['location']);
 }
+
+
+
 
 $result = mysqli_query($db, "SELECT * FROM user_events WHERE user_id='$userid' and event_id='$eventid'");
 if (!$result) {
     echo "DB klaida " . mysqli_error($db);
     exit;
 }
+
 $test = 0;
 if ($test = mysqli_fetch_assoc($result))
     $registered =  true;
 else $registered = false;
 
+
+if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles["Moderatorius"] && !$registered){
+    header("Location: /index.php");
+    exit;
+}
 ?>
 <html>
 
@@ -73,8 +83,8 @@ else $registered = false;
                 <p >Atgal į [<a href="/index.php">Pradžia</a>]</p>
              
                 <?php 
-                 if ($role >= $user_roles["Moderatorius"] )
-                 echo "<a href=\"/create_event.php/?update=$eventid\">Redaguoti renginį</a>";
+                   if ($role == $user_roles["Moderatorius"] )
+                   echo "<a href=\"/create_event.php/?update=$eventid\">Redaguoti renginį</a>";
                 ?>
                 </div>
                 <div class="row m-4 justify-content-center">
@@ -86,14 +96,18 @@ else $registered = false;
                             <input type="hidden" name="registered" value="<?php echo $registered ?>"/> 
                             <?php
                             echo "<button type=\"submit\" name=\"event\" value=\"$eventid\"";
-
-                            if ($arr["count"] == $arr["limit"] || $registered) {
+                            if(strtotime(date("Y-m-d")) > strtotime($arr['start'])){
+                                echo " class=\"btn btn-secondary btn-block\" disabled> Renginys pasibaigė ";
+                            }
+                            else if ($arr["count"] == $arr["limit"] || $registered) {
                                 echo " class=\"btn btn-secondary btn-block\"";
                                 if($registered){
                                     echo ">Atšaukti registraciją ";
-                                } else echo "disabled>Nėra vietų ";
+                                 
+                                }else  echo "disabled>Nėra vietų ";
                             
-                            } else
+                           
+                            }else
                                 echo " class=\"btn btn-primary btn-block\" > Registruotis ";
 
                             echo $arr["count"] . "/" . $arr["limit"] . "</button>";
@@ -106,7 +120,7 @@ else $registered = false;
                    
                         <p><b>Pradžia:</b> <?php echo $arr['start']; ?> </p>
                        
-                    
+                        <p><b>Vieta:</b> <?php echo $arr['loc']; ?> </p>
                         <p><b>Aprašymas:</b><br>
                         <div class="desc-event sec-bg"> <?php echo $arr['description'];?> </div>
                    

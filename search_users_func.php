@@ -15,12 +15,16 @@ if(isset($_SESSION['read_users'])){
     echo "SET";
 } else echo "NOT SET";
                 
-$region= $_SESSION['region'];
 $name = $_SESSION['name'];
+$id = $_SESSION['id'];
 $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 $sql = "SELECT username, age, region, image FROM " . USERS;
+$res = mysqli_query($db, "SELECT sregion FROM users WHERE id='$id'");
+$row = mysqli_fetch_assoc($res);
 
-if($region){
+$region = $row['sregion'];
+
+if($region != "Visos" ){
     $sql = $sql." WHERE region='$region'";
 }
 if($name){

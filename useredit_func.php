@@ -29,6 +29,8 @@ if(isset($_POST['vis'])){
 }
 
 $_SESSION['reg_error'] = "";
+$sreg = $_POST['sreg'];
+$_SESSION['sreg_reg'] = $regions[$sreg];
 $reg_p = $_POST['region'];
 $age = $_POST['age'];
 $_SESSION['age_error'] = "";
@@ -37,7 +39,7 @@ $desc = $_POST['description'];
 $_SESSION['desc_reg'] = $desc;
 $_SESSION['message'] = "";
 
-list(,, $dbpass, $dbmail,, $dbregion, $dbage,,,$dbvisible,$dbdesc) = checkname($user);
+list(,, $dbpass, $dbmail,, $dbregion, $dbage,,,$dbvisible,$dbdesc, $dbsreg) = checkname($user);
 
 if (!$dbpass) {
     echo " DB klaida nuskaitant slaptazodi vartotojui " . $user;
@@ -113,16 +115,16 @@ $mail_check =checkmail($mail) ;
 $age_check = checkage($age);
 $region_check = checkregion($reg); 
 $desc_check = checkdescription($desc, 250);
-if ($age_check && $region_check && $mail_check  && $desc_check &&  !$passwords_change  ) {
+if ($age_check && $region_check && $mail_check  && $desc_check) {
         
-    if($mail != $dbmail || $regions[$reg] != $dbregion || $age != $dbage || $visible != $dbvisible || $desc != $dbdesc) {
+    if($mail != $dbmail || $regions[$reg] != $dbregion || $age != $dbage || $visible != $dbvisible || $desc != $dbdesc || $sreg != $dbsreg) {
         $temp = isset($_POST['vis']);
-        $sql = "UPDATE " . USERS . " SET email='$mail', region='$regions[$reg]', age='$age', visible=$visible, description='$desc' WHERE  username='$user'";
+        $sql = "UPDATE " . USERS . " SET email='$mail', region='$regions[$reg]', sregion='$regions[$sreg]', age='$age', visible=$visible, description='$desc' WHERE username='$user'";
         if (!mysqli_query($db, $sql)) {
             echo " DB klaida keiciant info: " . $sql . "<br>" . mysqli_error($db);
             exit;
         }
-
+        $_SESSION['sreg'] = $regions[$sreg];
          $changed = true;
         $_SESSION['message'] = "Informacija pakeista";
         $_SESSION['visible'] = $visible;

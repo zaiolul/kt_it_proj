@@ -45,6 +45,8 @@ function inisession($arg)
     unset( $_SESSION['read_users']);
     $_SESSION['region_search'] = "";
     $_SESSION['name_search'] = "";
+
+    $_SESSION['sreg_reg'] = "Visos";
     $_SESSION['message'] = "";
 
 
@@ -129,7 +131,7 @@ function checkname($username)
 
     $result = mysqli_query($db, $sql);
 
-    $uname = $upass = $ulevel = $uid = $email = $regdate = $age = $image = $visible = $region =  null;
+    $uname = $upass = $ulevel = $uid = $email = $regdate = $age = $image = $visible = $region=$sregion =  null;
 
     if (!$result || (mysqli_num_rows($result) != 1))   // jei >1 tai DB vardas kartojasi, netikrinu, imu pirma
 
@@ -154,9 +156,10 @@ function checkname($username)
         $age = $row["age"];
         $region = $row["region"];
         $desc = $row["description"];
+        $sregion = $row["sregion"];
     }
 
-    return array($uid, $uname, $upass, $email, $regdate, $region, $age, $ulevel, $image, $visible, $desc);
+    return array($uid, $uname, $upass, $email, $regdate, $region, $age, $ulevel, $image, $visible, $desc, $sregion);
 }
 
 
@@ -237,9 +240,9 @@ function validdate($ts){
     if(!$ts){
         $_SESSION['date_error'] = "<font size=\"2\" color=\"#ff0000\">* Pasirinkite datą</font>";
     }
-    else if($ts <= strtotime(date("Y/m/d"))){
+    else if($ts < strtotime(date("Y/m/d"))){
         $_SESSION['date_error'] = "<font size=\"2\" color=\"#ff0000\">* Data negali būti senesnė nei šiandiena</font>";
-        return false;
+        return true;
     }
         
     return true;

@@ -70,7 +70,7 @@ foreach ($user_roles as $x => $x_value) {
             
            
             <?php
-            if ($role >= $user_roles["Moderatorius"] && $_SESSION['current'] == "event" )
+            if ($role == MOD_LEVEL && $_SESSION['current'] == "event" )
                 echo "<a href=\"create_event.php/?update=\">Kurti renginį</a>";
             ?>
         </div>

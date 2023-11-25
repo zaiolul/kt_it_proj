@@ -10,7 +10,7 @@ $user_roles=array(
 	"Moderatorius"=>"1",
 	"Narys"=>"0",
 	);
-$regions = array("","Alytaus", "Kauno", "Klaipėdos", "Marijampolės", "Panevėžio", "Šiaulių", "Tauragės", "Telšių", "Utenos", "Vilniaus");
+$regions = array("Visos","Alytaus", "Kauno", "Klaipėdos", "Marijampolės", "Panevėžio", "Šiaulių", "Tauragės", "Telšių", "Utenos", "Vilniaus");
 define("MIN_AGE", 16);
 define("DEFAULT_LEVEL","Narys");  // kokia rolė priskiriama kai registruojasi
 define("ADMIN_LEVEL","Administratorius");  // kas turi vartotojų valdymo teisę

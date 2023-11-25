@@ -1,9 +1,5 @@
 <div class="container">
     <?php
-    if (isset($_POST['region_search'])) {
-        $_SESSION['region_search'] = $regions[$_POST['region_search']];
-    }
-
     if (isset($_POST['name_search'])) {
         $_SESSION['name_search'] = $_POST['name_search'];
     }
@@ -21,7 +17,7 @@
                         <label for="name_search">Vardas</label>
                     </div>
                 </div>
-                <div class="col-3">
+                <!-- <div class="col-3">
                     <div class="form-floating mb-3">
                         <select class="form-select" name="region_search" id="region_search">
 
@@ -35,7 +31,7 @@
                         </select>
                         <label for="region_search">Apskritis</label>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-2 text-center">
                     <input type='submit' value='Ieškoti' class="btn btn-primary">
                 </div>
@@ -56,15 +52,15 @@
                         <?php
 
                         $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-                        $sql = "SELECT username, age, region, image FROM " . USERS . " WHERE visible='1'";
+                        $sql = "SELECT username, age, region, sregion image FROM " . USERS . " WHERE visible='1'";
 
-                        if (isset($_SESSION['region_search'])) {
-                            if ($_SESSION['region_search'])
-                                $sql = $sql . " and region='" . $_SESSION['region_search'] . "'";
-                        }
                         if (isset($_SESSION['name_search'])) {
                             $sql = $sql . "and username LIKE '%" . $_SESSION['name_search'] . "%'";
                         }
+                        if ($_SESSION['sreg'] != "Visos") {
+                            $sql = $sql . "and region='".$_SESSION['sreg']."'";
+                        }
+                        echo $_SESSION['sreg'];
                         $res = mysqli_query($db, $sql);
                         if (!$res) {
                             echo " DB klaida ieškant naudotojų: " . $sql . "<br>" . mysqli_error($db);

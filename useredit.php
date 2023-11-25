@@ -21,8 +21,8 @@ if ($_SESSION['prev'] == "index" || $_SESSION['prev'] == "chat") {
     $_SESSION['age_error'] = "";
     $_SESSION['mail_error'] = "";
     $_SESSION['message'] = "";
+    $_SESSION['sreg_reg'] = $_SESSION['sreg'];
     $_SESSION['visible_up'] = $_SESSION['visible'];
-    
 }
 $_SESSION['prev'] = "useredit";
 ?>
@@ -115,26 +115,45 @@ $_SESSION['prev'] = "useredit";
                                 </div>
                             </div>
 
-                            <div class="row mb-4  justify-content-center text-center">
-                                <div class="form-floating mb-4">
-                                    <textarea class="form-control" style="max-height: 150px; height: 100px;" name="description" id="description" wrap="soft"><?php echo $_SESSION['desc_reg']; ?></textarea>
-                                    <label for="description">Aprašymas</label>
-                                    <?php echo $_SESSION['desc_error']; ?>
+                            <div class="row   justify-content-center text-center">
+                                <div class="form-group">
+                                    <div class="form-floating mb-4">
+                                        <textarea class="form-control" style="max-height: 150px; height: 100px;" name="description" id="description" wrap="soft"><?php echo $_SESSION['desc_reg']; ?></textarea>
+                                        <label for="description">Aprašymas</label>
+                                        <?php echo $_SESSION['desc_error']; ?>
+                                    </div>
                                 </div>
                                 <div class="col-8">
                                     <input type="file" name="image" id="image" class="form-control">
                                     <label class="form-label" for="image">Profilio nuotrauka</label>
                                 </div>
-                                <div class="col-4">
 
-
+                                <div class="col">
                                     <div class="form-check text-start">
                                         <input class="form-check-input" type="checkbox" value="on" id="vis" name="vis" <?php echo ($_SESSION['visible_up']  == 1 ? "checked" : "") ?> />
                                         <label class="form-check-label" for="vis">Matomas kitiems</label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <b>
+                                    <p>Anketų paieška</p>
+                                </b>
+                                <div class="form-group">
+                                    <div class="form-floating">
+                                        <select class="form-select" name="sreg" id="sreg">
 
+                                            <?php
+                                            echo "<option selected=\"0\">" . $_SESSION['sreg_reg'] . "</option>";
+                                            for ($i = 0; $i < count($regions); $i++) {
+                                                echo "<option value=\"" . ($i) . "\">$regions[$i]</option>";
+                                            }
+                                            ?>
 
+                                        </select>
+                                        <label for="sreg">Rodomų anketų apskritis</label>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -142,13 +161,14 @@ $_SESSION['prev'] = "useredit";
 
                     </div>
 
-                    <div class="row m-4">
+                </div>
+                <div class="row m-4">
 
-                        <input type='submit' value='Atnaujinti' class="btn btn-primary">
-                    </div>
+                    <input type='submit' value='Atnaujinti' class="btn btn-primary">
                 </div>
             </div>
-        </form>
+    </div>
+    </form>
     </div>
 
 </body>

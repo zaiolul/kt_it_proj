@@ -30,7 +30,7 @@ if (isset($_POST['problem'])) {  // nori pagalbos
 
 if (checkname($user)) //vardo sintakse
 {
-  list($dbuid, $dbuname, $dbpass, $dbemail, $dbregdate, $dbregion, $dbage,  $dblevel, $dbimage, $dbvisible, $dbdesc) = checkname($user);  //patikrinam ir jei randam, nuskaitom DB       
+  list($dbuid, $dbuname, $dbpass, $dbemail, $dbregdate, $dbregion, $dbage,  $dblevel, $dbimage, $dbvisible, $dbdesc, $dbsregion) = checkname($user);  //patikrinam ir jei randam, nuskaitom DB       
   if ($dbuname) {  //yra vartotojas DB
 
     $_SESSION['ulevel'] = $dblevel;
@@ -66,6 +66,8 @@ if (checkname($user)) //vardo sintakse
          
           $_SESSION['age'] = $dbage;
           $_SESSION['region'] = $dbregion;
+
+          $_SESSION['sreg'] = $dbsregion;
           $_SESSION['visible'] = $dbvisible;
           $_SESSION['regdate'] = $dbregdate;
           $_SESSION['user'] = $dbuname;

@@ -6,8 +6,9 @@ if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "create_event" && $_SESSI
     header("Location: logout.php");
     exit;
 }
-
-if ($_SESSION['ulevel'] != $user_roles[ADMIN_LEVEL]) {
+include("config.php");
+include("functions.php");
+if ($_SESSION['ulevel'] != $user_roles[MOD_LEVEL]) {
     header("Location:/index.php");
     exit;
 }
@@ -17,8 +18,7 @@ if (!isset($_POST['update'])) {
     header("Location: index.php");
     exit;
 }
-include("config.php");
-include("functions.php");
+
 
 $_SESSION['prev'] = "create_event_func";
 $_SESSION['message'] = "";

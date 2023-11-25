@@ -39,6 +39,8 @@ if (!isset($_GET['update'])) {
 }
 
 $update = $_GET['update'];
+$delete="";
+
 if($update){
     
     $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
@@ -76,10 +78,10 @@ if($update){
 
 
 
-        <div class="row m-4 justify-content-center">
-            <div class="col-6 bg-light text-center">
+        <div class="row m-4  justify-content-center">
+            <div class="col-6  bg-light text-center">
 
-                <div class="row m-4 bg-light">
+                <div class="row m-4 ">
                     <?php
                     if (empty($update)) {
                         echo "<p><b>Renginio kūrimas</b><br>";
@@ -153,6 +155,16 @@ if($update){
                     <div class="row m-4">
 
                         <input type='submit' value="<?php echo empty($update) ? "Kurti" : "Atnaujinti" ?>" class="btn btn-primary">
+                      
+                    </div>
+                    <div class="row m-4 justify-content-center">
+                        <div class="col">
+                      <?php
+                            if(!empty($update)){
+                            echo "<a href=\"/delete_event.php/?event=$update\" class=\"btn btn-danger btn-block\">Šalinti</a> ";  
+                            }
+                        ?>
+                        </div>
                     </div>
                 </form>
             </div>

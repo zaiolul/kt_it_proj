@@ -48,7 +48,13 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <?php
                     if (count($arr)) {
                         foreach ($arr as $key => $value) {
+                            if( !isset($reg_arr[$value[0]]) && $_SESSION['ulevel'] != $user_roles['Moderatorius'] ){
+                                if(($value[4] == $value[5] && !isset($reg_arr[$value[0]])) || strtotime(date("Y-m-d")) > strtotime($value[6]))
+                                    continue;
+                            }
+                                
                     ?>
+                    
                             <tr>
                                 <td>
                                     <?php echo $value[1] ?>
@@ -57,14 +63,16 @@ while ($row = mysqli_fetch_assoc($result)) {
                                     <?php echo $value[3] ?>
                                 </td>
                                 <td>
-                                    <?php echo date("Y-m-d", strtotime($value[6])) ?>
+                                    <?php echo date("Y-m-d", strtotime($value[6]));
+                                    if(strtotime(date("Y-m-d")) > strtotime($value[6]))
+                                        echo " <i>Baigėsi</i>"; ?>
                                 </td>
                                 <td>
 
                                     <?php
                                     echo "<a href=\"event_page.php/?event=$value[0]\"";
 
-                                    if ($value[4] == $value[5] || isset($reg_arr[$value[0]])) {
+                                    if ($value[4] == $value[5] || isset($reg_arr[$value[0]]) || strtotime(date("Y-m-d")) > strtotime($value[6]) ) {
                                         echo " class=\"btn btn-secondary\">";
                                     } else
                                         echo " class=\"btn btn-primary\" type=\"submit\">";
