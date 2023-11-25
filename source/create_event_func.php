@@ -97,7 +97,7 @@ if (!empty($update)) {
 } else {
     if ($title_check && $date_check && $desc_check  && $loc_check &&  $short_check && $limit_check) {
         if (!mysqli_query($db, "INSERT INTO events (title, short_description, description, reg_limit, start_date, location) VALUES('$title', '$short', '$desc', '$limit', '$date', '$loc')")) {
-            echo " DB klaida keiciant info: " . $sql . "<br>" . mysqli_error($db);
+            echo " DB klaida keiciant info: <br>" . mysqli_error($db);
             $_SESSION['message'] = "sprogo";
             exit;
         }

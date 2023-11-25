@@ -35,8 +35,7 @@ CREATE TABLE `events` (
   `reg_count` int(11) NOT NULL DEFAULT 0,
   `reg_limit` int(11) NOT NULL DEFAULT 25,
   `start_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `location` varchar(30) NOT NULL,
-  `id_user_event` int(11) NOT NULL
+  `location` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
