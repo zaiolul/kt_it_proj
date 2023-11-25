@@ -92,7 +92,7 @@ if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles[
                         <h1> <?php echo $arr["title"] ?></h1>
                     </div>
                     <div class="col text-center align-self-center">
-                        <form method="POST" action="/event_register.php">
+                        <form method="POST" action="event_register.php">
                             <input type="hidden" name="registered" value="<?php echo $registered ?>"/> 
                             <?php
                             echo "<button type=\"submit\" name=\"event\" value=\"$eventid\"";

@@ -97,7 +97,7 @@ if($update){
                 <div class="row m-4 text-warning justify-content-center">
                     <b><?php echo $_SESSION['message']; ?></b>
                 </div>
-                <form action="/create_event_func.php" method="POST" class="justify-content-center">
+                <form action="create_event_func.php" method="POST" class="justify-content-center">
                     <input name="update" type="hidden" value="<?php echo $update ?>" />
                     <div class="row mb-4 justify-content-center">
                         <div class="col-6">
@@ -163,7 +163,7 @@ if($update){
                         <div class="col">
                       <?php
                             if(!empty($update)){
-                            echo "<a href=\"/delete_event.php?event=$update\" class=\"btn btn-danger btn-block\">Šalinti</a> ";  
+                            echo "<a href=\"delete_event.php?event=$update\" class=\"btn btn-danger btn-block\">Šalinti</a> ";  
                             }
                         ?>
                         </div>
