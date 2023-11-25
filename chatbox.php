@@ -4,18 +4,6 @@
          <div class="container chatbox bg-light">
              <?php
 
-                // $sql = "SELECT username FROM users WHERE id='$id'";
-
-                // $res = mysqli_query($db, $sql);
-                // if (!$res) {
-                //     echo " DB klaida skaitant zinutes: " . $sql . "<br>" . mysqli_error($db);
-                //     exit;
-                // }
-                // while ($res_send = mysqli_fetch_assoc($res)) 
-                //     $sender = $res_send['username'];
-
-                
-
                 if (isset($sender) && isset($receiver)) {
                     $sql = "SELECT * FROM messages WHERE user_id='$id' and receiver='$receiver' or user_id='$rid' and receiver='$sender'  ORDER BY id DESC";
 

@@ -19,6 +19,7 @@ function inisession($arg)
 
         $_SESSION['email'] = 0;
         $_SESSION['description'] = "";
+        $_SESSION['current'] = "main";
     }
 
     $_SESSION['name_login'] = "";
@@ -44,6 +45,21 @@ function inisession($arg)
     unset( $_SESSION['read_users']);
     $_SESSION['region_search'] = "";
     $_SESSION['name_search'] = "";
+    $_SESSION['message'] = "";
+
+
+    $_SESSION['title_error'] = "";
+    $_SESSION['title_event'] = "";
+    $_SESSION['short_error'] = "";
+    $_SESSION['short_event'] = "";
+    $_SESSION['desc_error'] = "";
+    $_SESSION['desc_event'] = "";
+    $_SESSION['date_error'] = "";
+    $_SESSION['date_event'] = "";
+    $_SESSION['loc_error'] = "";
+    $_SESSION['loc_event'] = "";
+    $_SESSION['limit_event'] = "";
+    $_SESSION['limit_error'] = "";
 }
 
 
@@ -184,12 +200,71 @@ function checkregion($reg)
     return true;
 }
 
-function checkdescription($desc){
+function checkdescription($desc, $limit){
     // hardcoded idc
-    if(!$desc || strlen($desc) > 250){ 
+    if(!$desc){
         $_SESSION['desc_error'] =
-            "<font size=\"2\" color=\"#ff0000\">* Maksimalus simbolių kiekis 250</font>";
+        "<font size=\"2\" color=\"#ff0000\">* Laukas negali būti tuščias</font>";
+    return false;
+    }
+    else if(strlen($desc) > $limit){ 
+        $_SESSION['desc_error'] =
+            "<font size=\"2\" color=\"#ff0000\">* Maksimalus simbolių kiekis $limit</font>";
         return false;
+    }
+    return true;
+}
+
+
+function checktext($text, $min, $max, $err_var){
+    if(!$text || empty($text)){
+        $_SESSION[$err_var] =
+        "<font size=\"2\" color=\"#ff0000\">* Laukas negali būti tuščias</font>";
+    return false;
+    }
+    else if(strlen($text) > $max){ 
+        $_SESSION[$err_var] = "<font size=\"2\" color=\"#ff0000\">* Maksimalus simbolių kiekis $max</font>";
+        return false;
+    } else if(strlen($text) < $min){ 
+        $_SESSION[$err_var] = "<font size=\"2\" color=\"#ff0000\">* Minimalus simbolių kiekis $min</font>";
+        return false;
+    }
+    return true;
+}
+
+
+function validdate($ts){
+    if(!$ts){
+        $_SESSION['date_error'] = "<font size=\"2\" color=\"#ff0000\">* Pasirinkite datą</font>";
+    }
+    else if($ts <= strtotime(date("Y/m/d"))){
+        $_SESSION['date_error'] = "<font size=\"2\" color=\"#ff0000\">* Data negali būti senesnė nei šiandiena</font>";
+        return false;
+    }
+        
+    return true;
+}
+
+
+
+function checknum($num,$min, $max)
+{
+    if(!$num){
+        $_SESSION['limit_error'] =
+        "<font size=\"2\" color=\"#ff0000\">* Laukas negali būti tuščias</font>";
+    }
+    else if(!intval($num)){
+        $_SESSION['limit_error'] =
+        "<font size=\"2\" color=\"#ff0000\">* Galimi tik skaičiai.</font>";
+    }
+    else if(intval($num) < $min ){
+        $_SESSION['limit_error'] =
+            "<font size=\"2\" color=\"#ff0000\">* Minimalus skaičius $min.</font>";
+        return false;
+    } else if(intval($num) > $max){
+        $_SESSION['limit_error'] =
+        "<font size=\"2\" color=\"#ff0000\">* Maksimalus skaičius $min.</font>";
+    return false;
     }
     return true;
 }

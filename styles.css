@@ -59,7 +59,11 @@ input.s1 {
     overflow: auto;
 }
 .main-bg {
-    background-color:#315863;
+    background-color:#043162;
+}
+
+.sec-bg{
+    background-color:#9bcafd;
 }
 
 .form-group{
@@ -83,4 +87,21 @@ img{
 .justify{
     text-align: justify;
     text-justify: inter-word;
+}
+
+.round{
+    border-radius: 8px;
+}
+
+.event-table{
+    border-collapse: separate;
+    border-spacing:0 20px;
+}
+
+.desc-event {
+    max-height: 400px;
+    word-wrap:break-word;
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    border-radius: 8px;
 }

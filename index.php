@@ -41,8 +41,12 @@ include("functions.php");
     ?>
        
     <?php
-    echo "<br>";
-        include("search_users.php");
+        echo "<br>";
+        if($_SESSION['current'] == "main")
+            include("search_users.php");
+        else if($_SESSION['current'] == "event")
+            include("events.php");
+        
     } else {
         if (!isset($_SESSION['prev'])) inisession("full");             
         else {

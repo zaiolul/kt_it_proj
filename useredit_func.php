@@ -112,7 +112,7 @@ if(!empty($_FILES["image"]["name"])) {
 $mail_check =checkmail($mail) ;
 $age_check = checkage($age);
 $region_check = checkregion($reg); 
-$desc_check = checkdescription($desc);
+$desc_check = checkdescription($desc, 250);
 if ($age_check && $region_check && $mail_check  && $desc_check &&  !$passwords_change  ) {
         
     if($mail != $dbmail || $regions[$reg] != $dbregion || $age != $dbage || $visible != $dbvisible || $desc != $dbdesc) {

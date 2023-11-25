@@ -72,6 +72,7 @@ if (checkname($user)) //vardo sintakse
           $_SESSION['description'] = $dbdesc;
           $_SESSION['prev'] = "proclogin";
           $_SESSION['message'] = "";
+          $_SESSION['current'] = "main";
         }
       }
     }

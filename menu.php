@@ -53,9 +53,26 @@ foreach ($user_roles as $x => $x_value) {
                     <p style="font-size:18px"> Ernestas Sabaliauskas IFK-1</p>
                 </b>
             </div>
+            <form method="GET" action="set_tab.php">
+                <?php
+                if ($_SESSION['current'] == "main") {
+                    echo "<button class=\"btn btn-primary\" type=\"submit\">Renginiai</a> <br>";
+                } else {
+                    echo "<button class=\"btn btn-primary\" type=\"submit\">Anketos</a> <br>";
+                }
+                echo "</button>";
+
+
+                ?>
+
+
+            </form>
+            
            
-                <a href="events.php" class="btn btn-primary">Renginiai</a> <br>
-        
+            <?php
+            if ($role >= $user_roles["Moderatorius"] && $_SESSION['current'] == "event" )
+                echo "<a href=\"create_event.php/?update=\">Kurti renginį</a>";
+            ?>
         </div>
 
     </div>
