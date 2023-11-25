@@ -161,7 +161,7 @@ if($update){
                         <div class="col">
                       <?php
                             if(!empty($update)){
-                            echo "<a href=\"/delete_event.php/?event=$update\" class=\"btn btn-danger btn-block\">Šalinti</a> ";  
+                            echo "<a href=\"/delete_event.php?event=$update\" class=\"btn btn-danger btn-block\">Šalinti</a> ";  
                             }
                         ?>
                         </div>

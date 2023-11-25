@@ -65,7 +65,7 @@ if ($_POST != null) {
             exit;
         }
     }
-    header("Location:profile.php/?usr=$receiver");
+    header("Location:profile.php?usr=$receiver");
     exit;
 }
 

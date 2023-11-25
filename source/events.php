@@ -70,7 +70,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 <td>
 
                                     <?php
-                                    echo "<a href=\"event_page.php/?event=$value[0]\"";
+                                    echo "<a href=\"event_page.php?event=$value[0]\"";
 
                                     if ($value[4] == $value[5] || isset($reg_arr[$value[0]]) || strtotime(date("Y-m-d")) > strtotime($value[6]) ) {
                                         echo " class=\"btn btn-secondary\">";
