@@ -80,7 +80,7 @@ if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles[
 
             <div class="col-8 bg-light">
                 <div class="text-center">
-                <p >Atgal į [<a href="/index.php">Pradžia</a>]</p>
+                <p >Atgal į [<a href="index.php">Pradžia</a>]</p>
              
                 <?php 
                    if ($role == $user_roles["Moderatorius"] )
