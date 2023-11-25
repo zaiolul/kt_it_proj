@@ -22,12 +22,11 @@ include("functions.php");
 
 <body class="main-bg">
     <?php
-    
-   
-    
-    if (!empty($_SESSION['user']))
-    {                                  
-       
+
+
+
+    if (!empty($_SESSION['user'])) {
+
         if (!isset($_SESSION)) {
             header("Location: logout.php");
             exit;
@@ -36,21 +35,30 @@ include("functions.php");
 
         inisession("part");   //   pavalom prisijungimo etapo kintamuosius
         $_SESSION['prev'] = "index";
-        
+        $time = 10;
+        $file = "./last_send.txt";
+        if (file_exists("./last_send.txt")) {
+            $lastSend = file_get_contents($file);
+            if (time() - $lastSend >= $time) {
+                
+                include('send_mail.php');
+
+                file_put_contents($file, time());
+            }
+        }
         include("menu.php"); //įterpiamas meniu pagal vartotojo rolę
     ?>
-       
+
     <?php
         echo "<br>";
-        if($_SESSION['current'] == "main")
+        if ($_SESSION['current'] == "main")
             include("search_users.php");
-        else if($_SESSION['current'] == "event")
+        else if ($_SESSION['current'] == "event")
             include("events.php");
-        
     } else {
-        if (!isset($_SESSION['prev'])) inisession("full");             
+        if (!isset($_SESSION['prev'])) inisession("full");
         else {
-            if ($_SESSION['prev'] != "proclogin") inisession("part"); 
+            if ($_SESSION['prev'] != "proclogin") inisession("part");
         }
         // jei ankstesnis puslapis perdavė $_SESSION['message']
         // echo "<div align=\"center\">";
