@@ -1,13 +1,6 @@
 <?php
-// proclogin.php tikrina prisijungimo reikšmes
-// formoje įvestas reikšmes išsaugo $_SESSION['xxxx_login']
-// jei randa klaidų jas sužymi $_SESSION['xxxx_error']
-// jei vardas ir slaptažodis tinka, užpildo $_SESSION['user'] ir $_SESSION['ulevel'],$_SESSION['userid'],$_SESSION['umail']  atžymi prisijungimo laiką DB
-// po sėkmingo arba ne bandymo jungtis vėl nukreipia i index.php
-//
-// jei paspausta "Pamiršote slaptažodį", formoje turi būti jau įvestas vardas , nukreips į forgotpass.php, o ten pabars ir į newpass.php
 session_start();
-// cia sesijos kontrole: proclogin tik is login  :palikti taip
+
 if (!isset($_SESSION['prev']) || ($_SESSION['prev'] != "login")) {
   header("Location: logout.php");
   exit;
@@ -31,18 +24,12 @@ if (isset($_POST['problem'])) {  // nori pagalbos
 if (checkname($user)) //vardo sintakse
 {
   list($dbuid, $dbuname, $dbpass, $dbemail, $dbregdate, $dbregion, $dbage,  $dblevel, $dbimage, $dbvisible, $dbdesc, $dbsregion) = checkname($user);  //patikrinam ir jei randam, nuskaitom DB       
-  if ($dbuname) {  //yra vartotojas DB
+  if ($dbuname) {  
 
     $_SESSION['ulevel'] = $dblevel;
     $_SESSION['id'] = $dbuid;
     $_SESSION['email'] = $dbemail;
-  
-    // $_SESSION['user'] - nustatysim veliau, jei slaptazodis  geras
 
-    // if (isset($_POST['problem'])) {  
-    //   header("Location:forgotpass.php");
-    //   exit;
-    // }
     $pass = $_POST['pass'];
     
     $_SESSION['pass_login'] = $pass;

@@ -127,7 +127,7 @@ function checkname($username)
 
     $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 
-    $sql = "SELECT * FROM " . USERS . " WHERE username = '$username'";
+    $sql = "SELECT * FROM users WHERE username = '$username'";
 
     $result = mysqli_query($db, $sql);
 

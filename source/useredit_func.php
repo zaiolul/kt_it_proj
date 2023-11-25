@@ -71,7 +71,7 @@ if ($pass || $passn) {
             if ($pass != $passn)   // vartotojas kazka keicia
             {
                 $dbpass = substr(hash('sha256', $passn), 5, 32);
-                $sql = "UPDATE " . USERS . " SET password='$dbpass'  WHERE  username='$user'";
+                $sql = "UPDATE users SET password='$dbpass'  WHERE  username='$user'";
                 if (!mysqli_query($db, $sql)) {
                     echo " DB klaida keiciant slaptazodi: " . $sql . "<br>" . mysqli_error($db);
                     exit;
@@ -104,7 +104,7 @@ if(!empty($_FILES["image"]["name"])) {
         $image = $_FILES['image']['tmp_name']; 
         $imgContent = addslashes(file_get_contents($image)); 
 
-        $sql = "UPDATE " . USERS . " SET image='$imgContent' WHERE  username='$user'";
+        $sql = "UPDATE users SET image='$imgContent' WHERE  username='$user'";
         if (!mysqli_query($db, $sql)) {
             echo " DB klaida keiciant nuotrauka: " . $sql . "<br>" . mysqli_error($db);
             exit;
@@ -121,7 +121,7 @@ if ($age_check && $region_check && $mail_check  && $desc_check) {
         
     if($mail != $dbmail || $regions[$reg] != $dbregion || $age != $dbage || $visible != $dbvisible || $desc != $dbdesc || $sreg != $dbsreg) {
         $temp = isset($_POST['vis']);
-        $sql = "UPDATE " . USERS . " SET email='$mail', region='$regions[$reg]', sregion='$regions[$sreg]', age='$age', visible=$visible, description='$desc' WHERE username='$user'";
+        $sql = "UPDATE users SET email='$mail', region='$regions[$reg]', sregion='$regions[$sreg]', age='$age', visible=$visible, description='$desc' WHERE username='$user'";
         if (!mysqli_query($db, $sql)) {
             echo " DB klaida keiciant info: " . $sql . "<br>" . mysqli_error($db);
             exit;

@@ -18,7 +18,7 @@ if(isset($_SESSION['read_users'])){
 $name = $_SESSION['name'];
 $id = $_SESSION['id'];
 $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-$sql = "SELECT username, age, region, image FROM " . USERS;
+$sql = "SELECT username, age, region, image FROM users";
 $res = mysqli_query($db, "SELECT sregion FROM users WHERE id='$id'");
 $row = mysqli_fetch_assoc($res);
 

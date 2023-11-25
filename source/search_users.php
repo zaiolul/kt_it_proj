@@ -38,7 +38,7 @@
                         <?php
 
                         $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-                        $sql = "SELECT username, age, region, sregion, image FROM " . USERS . " WHERE visible='1'";
+                        $sql = "SELECT username, age, region, sregion, image FROM users  WHERE visible='1'";
 
                         if (isset($_SESSION['name_search'])) {
                             $sql = $sql . "and username LIKE '%" . $_SESSION['name_search'] . "%'";

@@ -1,10 +1,9 @@
 <?php
 define("DB_SERVER", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "");
+define("DB_USER", "stud");
+define("DB_PASS", "stud");
 define("DB_NAME", "it_proj");
-define("USERS", "users");
-define("MESSAGES", "messages");
+
 $user_roles=array(     
 	"Administratorius"=>"2",
 	"Moderatorius"=>"1",
