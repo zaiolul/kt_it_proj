@@ -95,13 +95,22 @@ $_SESSION['prev'] = "useredit";
                                     <div class="form-floating">
                                         <select class="form-select" name="region" id="region">
 
-                                            <?php
+                                            <!-- <?php
                                             echo "<option value=\"0\">" . $_SESSION['reg_reg'] . "</option>";
                                             for ($i = 1; $i < count($regions); $i++) {
                                                 echo "<option value=\"" . ($i) . "\">$regions[$i]</option>";
                                             }
+                                            ?> -->
+                                            
+                                            <?php
+                                            // echo "<option value=\"0\">" . $_SESSION['sreg_reg'] . "</option>";
+                                            for ($i = 1; $i < count($regions); $i++) {
+                                                echo "<option value=\"" . ($i) . "\"";
+                                                if($regions[$i] == $_SESSION['reg_reg'])
+                                                    echo "selected";
+                                                echo ">$regions[$i]</option>";
+                                            }
                                             ?>
-
                                         </select>
                                         <label for="region">Apskritis</label>
                                     </div>
@@ -144,9 +153,12 @@ $_SESSION['prev'] = "useredit";
                                         <select class="form-select" name="sreg" id="sreg">
 
                                             <?php
-                                            echo "<option selected=\"0\">" . $_SESSION['sreg_reg'] . "</option>";
+                                            // echo "<option value=\"0\">" . $_SESSION['sreg_reg'] . "</option>";
                                             for ($i = 0; $i < count($regions); $i++) {
-                                                echo "<option value=\"" . ($i) . "\">$regions[$i]</option>";
+                                                echo "<option value=\"" . ($i) . "\"";
+                                                if($regions[$i] == $_SESSION['sreg_reg'])
+                                                    echo "selected";
+                                                echo ">$regions[$i]</option>";
                                             }
                                             ?>
 
@@ -160,13 +172,13 @@ $_SESSION['prev'] = "useredit";
                         </div>
 
                     </div>
+                    <div class="row m-4">
 
+<input type='submit' value='Atnaujinti' class="btn btn-primary">
+</div>
+</div>
                 </div>
-                <div class="row m-4">
-
-                    <input type='submit' value='Atnaujinti' class="btn btn-primary">
-                </div>
-            </div>
+               
     </div>
     </form>
     </div>

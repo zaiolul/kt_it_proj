@@ -17,21 +17,7 @@
                         <label for="name_search">Vardas</label>
                     </div>
                 </div>
-                <!-- <div class="col-3">
-                    <div class="form-floating mb-3">
-                        <select class="form-select" name="region_search" id="region_search">
-
-                            <?php
-                            echo "<option value=\"0\">" . "Visos" . "</option>";
-                            for ($i = 1; $i < count($regions); $i++) {
-                                echo "<option value=\"" . ($i) . "\">$regions[$i]</option>";
-                            }
-                            ?>
-
-                        </select>
-                        <label for="region_search">Apskritis</label>
-                    </div>
-                </div> -->
+              
                 <div class="col-2 text-center">
                     <input type='submit' value='Ieškoti' class="btn btn-primary">
                 </div>
@@ -52,7 +38,7 @@
                         <?php
 
                         $db = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-                        $sql = "SELECT username, age, region, sregion image FROM " . USERS . " WHERE visible='1'";
+                        $sql = "SELECT username, age, region, sregion, image FROM " . USERS . " WHERE visible='1'";
 
                         if (isset($_SESSION['name_search'])) {
                             $sql = $sql . "and username LIKE '%" . $_SESSION['name_search'] . "%'";
@@ -60,7 +46,7 @@
                         if ($_SESSION['sreg'] != "Visos") {
                             $sql = $sql . "and region='".$_SESSION['sreg']."'";
                         }
-                        echo $_SESSION['sreg'];
+                      
                         $res = mysqli_query($db, $sql);
                         if (!$res) {
                             echo " DB klaida ieškant naudotojų: " . $sql . "<br>" . mysqli_error($db);
@@ -91,6 +77,7 @@
                         if (isset($_SESSION['read_users'])) {
                             $rows = $_SESSION['read_users'];
                             foreach ($_SESSION['read_users'] as $key => $value) {
+                             
                         ?>
                                 <tr>
                                     <td>

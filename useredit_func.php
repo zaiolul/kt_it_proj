@@ -30,7 +30,7 @@ if(isset($_POST['vis'])){
 
 $_SESSION['reg_error'] = "";
 $sreg = $_POST['sreg'];
-$_SESSION['sreg_reg'] = $regions[$sreg];
+
 $reg_p = $_POST['region'];
 $age = $_POST['age'];
 $_SESSION['age_error'] = "";
@@ -53,6 +53,8 @@ if($reg_p == 0){
     $_SESSION['reg_reg'] = $regions[$reg_p];
     $reg = $reg_p;
 } 
+$_SESSION['sreg_reg'] = $regions[$sreg];
+
 
 $change = false;
 
