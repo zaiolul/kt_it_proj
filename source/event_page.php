@@ -84,7 +84,7 @@ if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles[
              
                 <?php 
                    if ($role == $user_roles["Moderatorius"] )
-                   echo "<a href=\"/create_event.php/?update=$eventid\">Redaguoti renginį</a>";
+                   echo "<a href=\"/create_event.php?update=$eventid\">Redaguoti renginį</a>";
                 ?>
                 </div>
                 <div class="row m-4 justify-content-center">
