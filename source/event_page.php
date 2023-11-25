@@ -73,12 +73,12 @@ if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles[
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 
-<body class="main-bg ">
-    <div class="container rounded">
+<body class="main-bg">
+    <div class="container main-bg rounded">
 
         <div class="row m-4 justify-content-center">
 
-            <div class="col-8 bg-light ">
+            <div class="col-8 bg-light">
                 <div class="text-center">
                 <p >Atgal į [<a href="/index.php">Pradžia</a>]</p>
              
@@ -118,7 +118,7 @@ if(strtotime(date("Y-m-d")) > strtotime($arr['start'])  && $role != $user_roles[
                 </div>
                 <div class="row m-4 justify-content-start">
                    
-                        <p><b>Pradžia:</b> <?php echo $arr['start']; ?> </p>
+                        <p><b>Pradžia:</b> <?php echo date("Y-m-d",strtotime($arr['start'])); ?> </p>
                        
                         <p><b>Vieta:</b> <?php echo $arr['loc']; ?> </p>
                         <p><b>Aprašymas:</b><br>

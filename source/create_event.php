@@ -57,10 +57,12 @@ if($update){
 
     $_SESSION['desc_event'] = $arr['description'];
 
-    $_SESSION['date_event'] = $arr['start'];
+    $_SESSION['date_event'] = date("Y-m-d",strtotime($arr['start']));
 
     $_SESSION['loc_event'] = $arr['loc'];
     $_SESSION['limit_event'] = $arr['limit'];
+}else{
+    $_SESSION['date_event'] = date("Y-m-d");
 }
 ?>
 <html>
@@ -111,7 +113,7 @@ if($update){
                         <div class="col-6">
                             <div class="form-group">
                                 <div class="form-floating mb-3">
-                                    <input type="date" name="data" class="form-control" id="data" value="<?php echo $_SESSION['date_event'];  ?>" />
+                                    <input type="date" name="data" class="form-control" id="data" value="<?php echo date("Y-m-d", strtotime($_SESSION['date_event']));  ?>" />
                                     <label for="data">Data</label>
                                     <?php echo $_SESSION['date_error']; ?>
                                 </div>
